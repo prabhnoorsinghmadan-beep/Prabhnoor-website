@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Noor | Personal Website</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <nav>
+      <h1>Noor</h1>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#achievements">Achievements</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <h2>Hi, I’m <span>Noor</span></h2>
+    <p><span id="typed-text"></span></p>
+    <a href="#about" class="btn">View My Journey</a>
+  </section>
+
+  <!-- About Section -->
+  <section class="about fade-in" id="about">
+    <h2>About Me</h2>
+    <p>
+      Hey! I’m Prabhnoor (people call me by my nickname Noor). 
+      I was born in Delhi and started my journey as a student-athlete in Bangalore in 2021. 
+      I’m a passionate show jumper, MUN delegate, and a 10th grader at a CBSE school.
+      When I’m not riding or debating, I love making music in my free time.
+      I’m a huge fan of rock music, with bands like Led Zeppelin, AC/DC, and Arctic Monkeys topping my playlist.
+      I also play the drums, which is one of my favorite ways to express creativity. 
+      I’ve been to 9 MUNs and have chaired 4 others, which has taught me leadership, public speaking, and teamwork.
+      Apart from that, I’m fascinated by technology and robotics, and I love working on projects that challenge me to innovate and create.
+      Looking ahead, I aspire to join the Navy MARCOS, which has been my dream since day one. 
+      I’m driven, disciplined, and passionate about everything I do, whether it’s sports, academics, or personal projects.
+    </p>
+  </section>
+
+  <!-- Achievements Section -->
+  <section class="achievements fade-in" id="achievements">
+    <h2>Achievements</h2>
+    <ul>
+      <li>4th position – JNEC 2024–25 (Children-1 Category)</li>
+      <li>🏇 Represented my academy at the National Equestrian Championship 2023</li>
+      <li>🗣 Represented Maldives & Algeria and other countries in various MUNs (in committees like DISEC and UNHRC)</li>
+      <li>💡 Working on a tech project to help non-verbal individuals communicate</li>
+      <li>Selected to represent Rangareddy district in Telangana (basketball)</li>
+      <li>Recognized to play for Keystone Basketball Academy (India) in Malaysia</li>
+    </ul>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="gallery fade-in" id="gallery">
+    <h2>Gallery</h2>
+    <div class="images">
+      <img src="noor.jpg" alt="Noor 1" />
+      <img src="noor2.jpg" alt="Noor 2" />
+      <img src="noor3.jpg" alt="Noor 3" />
+      <img src="noor4.jpg" alt="Noor 4" />
+      <img src="noor5.jpg" alt="Noor 5" />
+      <img src="noor6.jpg" alt="Noor 6" />
+      <img src="noor7.jpg" alt="Noor 7" />
+      <img src="noor8.jpg" alt="Noor 8" />
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact fade-in" id="contact">
+    <h2>Contact Me</h2>
+    <p>Click the buttons below to see my contact details:</p>
+    
+    <div class="contact-buttons">
+      <button onclick="showPhone()" class="btn">Show Phone Number</button>
+      <button onclick="showEmail()" class="btn">Show Email</button>
+      <button onclick="showInsta()" class="btn">Show Instagram</button>
+    </div>
+
+    <p id="phone" class="contact-info"></p>
+    <p id="email" class="contact-info"></p>
+    <p id="insta" class="contact-info"></p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Noor | All Rights Reserved</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Fade-in animation
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = { threshold: 0.2 };
+    const appearOnScroll = new IntersectionObserver(function(entries, observer){
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, appearOptions);
+
+    faders.forEach(fader => appearOnScroll.observe(fader));
+
+    // Contact info functions
+    function showPhone() {
+      document.getElementById('phone').innerText = "📞 +91-8328640476";
+    }
+    function showEmail() {
+      document.getElementById('email').innerText = "✉️ prabhnoorsinghmadan@gmail.com";
+    }
+    function showInsta() {
+      document.getElementById('insta').innerText = "📸 Instagram: noor.equestrian2";
+    }
+
+    // Typing effect
+    const texts = ["Show Jumper", "MUN Delegate", "Student"];
+    let count = 0, index = 0, currentText = '', letter = '';
+    (function type(){
+      if(count === texts.length) count = 0;
+      currentText = texts[count];
+      letter = currentText.slice(0, ++index);
+      document.getElementById('typed-text').textContent = letter;
+      if(letter.length === currentText.length){
+        setTimeout(() => { index = 0; count++; type(); }, 1500);
+      } else {
+        setTimeout(type, 150);
+      }
+    }());
+  </script>
+
+</body>
+</html>
